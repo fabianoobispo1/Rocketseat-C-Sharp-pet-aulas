@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PetFolio.Aplication\PetFolio.Aplication.csproj" />
     <ProjectReference Include="..\PetFolio.Comunication\PetFolio.Comunication.csproj" />
   </ItemGroup>
