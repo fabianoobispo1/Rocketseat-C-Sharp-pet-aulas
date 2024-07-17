@@ -4,6 +4,9 @@ using Petfolio.Aplication.UseCases.Pet.Registrar;
 using Petfolio.Aplication.UseCases.Pet.update;
 using Petfolio.comunication.Requests;
 using Petfolio.comunication.Responses;
+using PetFolio.Aplication.UseCases.Pet.GetAll;
+using PetFolio.Aplication.UseCases.Pet.GetByID;
+using PetFolio.Comunication.Responses;
 
 namespace PetFolio.API.Controllers
 {
@@ -36,6 +39,37 @@ namespace PetFolio.API.Controllers
             useCase.Execute(id, request);
 
             return NoContent();
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(ResponseAllPetJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public IActionResult GetAll()        {
+
+            var useCase = new GetAllPetsUseCase();
+
+            var response = useCase.Execute();
+
+            if (response.Pets.Any()) { 
+                return Ok(response);
+            }
+            return NoContent();
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(ResponsePetJson), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public IActionResult Get([FromRoute] int id)
+        {
+
+            var useCase = new GetPetByIdUseCase();
+
+            var response = useCase.Execute(id);
+
+          
+            return Ok(response);
+        
         }
 
     }

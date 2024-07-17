@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UseCases\Pet\NovaPasta\**" />
+    <EmbeddedResource Remove="UseCases\Pet\NovaPasta\**" />
+    <None Remove="UseCases\Pet\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PetFolio.Comunication\PetFolio.Comunication.csproj" />
   </ItemGroup>
 
